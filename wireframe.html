@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PHI Shield — Wireframe</title>
+<style>
+  /* Deliberately plain / greyscale — this is a LAYOUT wireframe,
+     not the final styled product (that's frontend/index.html). */
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #fff;
+    color: #222;
+  }
+  .wf-label {
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    background: #fff;
+    padding: 0 6px;
+    font-size: 11px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .box {
+    position: relative;
+    border: 2px dashed #999;
+    background: #fafafa;
+  }
+
+  header.wf-header {
+    position: relative;
+    border-bottom: 2px solid #333;
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .wf-title-block { display: flex; align-items: center; gap: 12px; }
+  .wf-logo {
+    width: 36px; height: 36px;
+    background: #ccc;
+    border: 2px solid #888;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; color: #666;
+  }
+  .wf-title h1 { margin: 0; font-size: 18px; }
+  .wf-title p { margin: 2px 0 0; font-size: 12px; color: #888; }
+  .wf-status-pill {
+    border: 2px solid #999;
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 12px;
+    color: #666;
+    background: #f0f0f0;
+  }
+
+  main.wf-desk {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    padding: 40px 24px 24px;
+  }
+  @media (max-width: 800px) {
+    main.wf-desk { grid-template-columns: 1fr; }
+  }
+
+  .panel { padding: 20px; }
+  .panel-num {
+    display: inline-block;
+    border: 2px solid #999;
+    font-size: 11px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    color: #888;
+    margin-bottom: 8px;
+  }
+  .panel h2 { margin: 0 0 4px; font-size: 16px; }
+  .panel .sub { margin: 0 0 16px; font-size: 12px; color: #888; }
+
+  .textarea-box {
+    min-height: 220px;
+    margin-bottom: 16px;
+  }
+  .textarea-box .wf-placeholder-text {
+    padding: 14px;
+    font-size: 12px;
+    color: #aaa;
+    font-family: monospace;
+    line-height: 1.6;
+  }
+
+  .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .wf-btn {
+    border: 2px solid #333;
+    background: #eee;
+    padding: 10px 16px;
+    font-size: 13px;
+    text-align: center;
+    color: #333;
+  }
+  .wf-btn.primary { background: #333; color: #fff; border-color: #333; }
+  .wf-btn.ghost { background: #fff; color: #555; }
+
+  .output-box {
+    min-height: 220px;
+    margin-bottom: 16px;
+    padding: 14px;
+  }
+  .output-box .wf-placeholder-text {
+    font-size: 12px;
+    color: #aaa;
+    font-style: italic;
+  }
+  .redaction-sample {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-family: monospace;
+    font-size: 12px;
+  }
+  .redaction-sample .line { display: flex; gap: 6px; align-items: center; }
+  .black-bar {
+    display: inline-block;
+    height: 12px;
+    background: #333;
+  }
+  .w1 { width: 70px; }
+  .w2 { width: 50px; }
+  .w3 { width: 90px; }
+
+  .tags-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+  .tag {
+    border: 2px solid #999;
+    border-radius: 20px;
+    padding: 4px 10px;
+    font-size: 11px;
+    color: #777;
+    background: #f3f3f3;
+  }
+
+  .stamp-box {
+    display: inline-block;
+    border: 2px solid #999;
+    color: #999;
+    padding: 6px 14px;
+    font-size: 12px;
+    transform: rotate(-4deg);
+    margin-left: auto;
+  }
+  .stamp-row { display: flex; justify-content: flex-end; }
+
+  footer.wf-footer {
+    border-top: 2px solid #333;
+    padding: 16px 24px 32px;
+    font-size: 11px;
+    color: #999;
+  }
+
+  .annotation {
+    font-size: 11px;
+    color: #b00;
+    margin-top: 6px;
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+
+  <header class="wf-header box">
+    <span class="wf-label">Header</span>
+    <div class="wf-title-block">
+      <div class="wf-logo">LOGO</div>
+      <div class="wf-title">
+        <h1>PHI Shield</h1>
+        <p>tagline text</p>
+      </div>
+    </div>
+    <div class="wf-status-pill">● status text</div>
+  </header>
+
+  <main class="wf-desk">
+
+    <section class="panel box">
+      <span class="wf-label">Panel 01 — Input</span>
+      <span class="panel-num">01</span>
+      <h2>Clinical note</h2>
+      <p class="sub">subtext / hint line</p>
+
+      <div class="textarea-box box">
+        <span class="wf-label">Textarea (editable)</span>
+        <div class="wf-placeholder-text">
+          Patient: ___________<br>
+          DOB: ___________<br>
+          SSN: ___________<br>
+          <br>
+          [ free-typed note text ]
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <div class="wf-btn primary">Scan &amp; Redact ▸</div>
+        <div class="wf-btn ghost">Load sample note</div>
+      </div>
+      <p class="annotation">→ click "Scan &amp; Redact" sends note to backend, fills panel 02</p>
+    </section>
+
+    <section class="panel box">
+      <span class="wf-label">Panel 02 — Output</span>
+      <span class="panel-num">02</span>
+      <h2>Cleared for export</h2>
+      <p class="sub">subtext / hint line</p>
+
+      <div class="output-box box">
+        <span class="wf-
