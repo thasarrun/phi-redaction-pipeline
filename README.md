@@ -1,1 +1,89 @@
 # phi-redaction-pipeline
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PHI Shield — Redaction Pipeline</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="masthead">
+    <div class="masthead-mark">
+      <span class="mark-glyph">▣</span>
+      <div>
+        <h1>PHI Shield</h1>
+        <p class="masthead-sub">Redacts patient identifiers before they leave this network</p>
+      </div>
+    </div>
+    <div class="barrier-status" id="barrierStatus">
+      <span class="status-dot"></span>
+      <span class="status-text">Barrier active — nothing has left yet</span>
+    </div>
+  </header>
+
+  <main class="desk">
+
+    <section class="panel panel--intake">
+      <div class="panel-head">
+        <span class="panel-num">01</span>
+        <div>
+          <h2>Clinical note</h2>
+          <p class="panel-hint">What you'd otherwise paste into an outside AI tool</p>
+        </div>
+      </div>
+
+      <textarea
+        id="noteInput"
+        class="note-area"
+        placeholder="Patient: Jane Doe
+DOB: 03/14/1979
+SSN: 044-19-8823
+MRN: 0027841
+
+Pt presents with persistent cough x2 weeks..."
+      ></textarea>
+
+      <div class="intake-actions">
+        <button id="scanBtn" class="btn-primary">
+          <span class="btn-label">Scan &amp; redact</span>
+          <span class="btn-arrow">▸</span>
+        </button>
+        <button id="sampleBtn" class="btn-ghost">Load sample note</button>
+      </div>
+    </section>
+
+    <section class="panel panel--output">
+      <div class="panel-head">
+        <span class="panel-num">02</span>
+        <div>
+          <h2>Cleared for export</h2>
+          <p class="panel-hint">Only this version should ever leave the building</p>
+        </div>
+      </div>
+
+      <div id="outputArea" class="output-area">
+        <p class="output-empty">Run a scan to see the redacted version here.</p>
+      </div>
+
+      <div class="detected-panel" id="detectedPanel" hidden>
+        <p class="detected-title">Detected</p>
+        <ul class="detected-list" id="detectedList"></ul>
+      </div>
+
+      <div class="stamp" id="stamp" hidden>Cleared for export</div>
+    </section>
+
+  </main>
+
+  <footer class="foot-note">
+    <p>Demo detector uses pattern matching (SSNs, dates, phone numbers, MRNs, name pairs) so the interface
+    is testable end-to-end. The production pipeline swaps this for a clinical NER model behind the same UI.</p>
+  </footer>
+
+<script src="script.js"></script>
+</body>
+</html>
